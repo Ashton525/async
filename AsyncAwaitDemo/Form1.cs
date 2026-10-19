@@ -11,35 +11,49 @@ namespace AsyncAwaitDemo
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void Browse_Click(object sender, EventArgs e)
+        private void btnBrowseBook1_Click(object sender, EventArgs e)
         {
-            DialogResult result = this.openFileDialog1.ShowDialog();
+            DialogResult result = this.ofdBook1.ShowDialog();
             if (result == DialogResult.OK)
             {
-                txtFileName.Text = openFileDialog1.FileName.Split("\\").LastOrDefault();
+                txtBook1.Text = ofdBook1.FileName.Split("\\").LastOrDefault();
             }
         }
 
-        private async void button2_Click(object sender, EventArgs e)
+        private void btnBrowseBook2_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            DialogResult result = this.ofdBook2.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                txtBook2.Text = ofdBook2.FileName.Split("\\").LastOrDefault();
+            }
+        }
+
+        private async void btnSubmit_Click(object sender, EventArgs e)
+        {
+            lstBook1.Items.Clear();
+            lstBook2.Items.Clear();
             List<Task> tasks = new List<Task>();
 
-            var file = openFileDialog1.FileName;
-            var wordTask = ReadBook(file);
+            var file1 = ofdBook1.FileName;
+            var wordTask1 = ReadBook(file1, lstBook1);
 
-            tasks.Add(wordTask);
+            var file2 = ofdBook2.FileName;
+            var wordTask2 = ReadBook(file2, lstBook2);
+
+            tasks.Add(wordTask1);
+            tasks.Add(wordTask2);
             await Task.WhenAll(tasks);
 
             //Other operations after this finished
         }
 
-        private async Task ReadBook(string filename)
+        private async Task ReadBook(string filename, ListBox listbox)
         {
             var lines = await File.ReadAllLinesAsync(filename);
 
@@ -52,10 +66,10 @@ namespace AsyncAwaitDemo
                                                 .Replace("'", "")
                                                 .Replace("{", ""));
 
-            //Now flattening out the array of lines into one array of words 
+            //Now flattening out the array of lines into one array of words
             var arrayOfWords = arrayLinesCleaned.SelectMany(x => x.Split(" "));
 
-            //Now create a Dictionary which is a list of key, value pairs 
+            //Now create a Dictionary which is a list of key, value pairs
             Dictionary<string, int> wordDic = new Dictionary<string, int>();
 
             //Convert the Parallel Query into a list to execute the query and then build the Dictionary
@@ -76,15 +90,10 @@ namespace AsyncAwaitDemo
             //diplay the top10 elements from the wordDic as a key(word) value(frequency) pairs in the listBox
             foreach (var word in top10)
             {
-                listBox1.Items.Add(word.Key + " - " + word.Value);
+                listbox.Items.Add(word.Key + " - " + word.Value);
             }
 
 
-
-        }
-
-        private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
-        {
 
         }
     }

@@ -28,85 +28,139 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            listBox1 = new ListBox();
-            openFileDialog1 = new OpenFileDialog();
-            Browse = new Button();
-            txtFileName = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
+            lblBook1 = new Label();
+            txtBook1 = new TextBox();
+            btnBrowseBook1 = new Button();
+            lblBook2 = new Label();
+            txtBook2 = new TextBox();
+            btnBrowseBook2 = new Button();
+            btnSubmit = new Button();
+            btnExit = new Button();
+            lstBook1 = new ListBox();
+            lstBook2 = new ListBox();
+            ofdBook1 = new OpenFileDialog();
+            ofdBook2 = new OpenFileDialog();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(184, 42);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 25);
-            label1.TabIndex = 0;
-            label1.Text = "File";
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 25;
-            listBox1.Location = new Point(103, 102);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(498, 254);
-            listBox1.TabIndex = 1;
-            // 
-            // openFileDialog1
-            // 
-            openFileDialog1.FileOk += openFileDialog1_FileOk;
-            // 
-            // Browse
-            // 
-            Browse.Location = new Point(510, 28);
-            Browse.Name = "Browse";
-            Browse.Size = new Size(128, 47);
-            Browse.TabIndex = 2;
-            Browse.Text = "Browse";
-            Browse.UseVisualStyleBackColor = true;
-            Browse.Click += Browse_Click;
-            // 
-            // txtFileName
-            // 
-            txtFileName.Location = new Point(228, 36);
-            txtFileName.Name = "txtFileName";
-            txtFileName.Size = new Size(276, 31);
-            txtFileName.TabIndex = 3;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(218, 375);
-            button1.Name = "button1";
-            button1.Size = new Size(105, 35);
-            button1.TabIndex = 4;
-            button1.Text = "Exit";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(428, 371);
-            button2.Name = "button2";
-            button2.Size = new Size(115, 39);
-            button2.TabIndex = 5;
-            button2.Text = "Submit";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
+            //
+            // lblBook1
+            //
+            lblBook1.AutoSize = true;
+            lblBook1.Location = new Point(40, 58);
+            lblBook1.Name = "lblBook1";
+            lblBook1.Size = new Size(64, 25);
+            lblBook1.TabIndex = 0;
+            lblBook1.Text = "Book 1";
+            //
+            // txtBook1
+            //
+            txtBook1.Location = new Point(110, 55);
+            txtBook1.Name = "txtBook1";
+            txtBook1.ReadOnly = true;
+            txtBook1.Size = new Size(250, 31);
+            txtBook1.TabIndex = 1;
+            //
+            // btnBrowseBook1
+            //
+            btnBrowseBook1.Location = new Point(375, 52);
+            btnBrowseBook1.Name = "btnBrowseBook1";
+            btnBrowseBook1.Size = new Size(110, 38);
+            btnBrowseBook1.TabIndex = 2;
+            btnBrowseBook1.Text = "Browse";
+            btnBrowseBook1.UseVisualStyleBackColor = true;
+            btnBrowseBook1.Click += btnBrowseBook1_Click;
+            //
+            // lblBook2
+            //
+            lblBook2.AutoSize = true;
+            lblBook2.Location = new Point(520, 58);
+            lblBook2.Name = "lblBook2";
+            lblBook2.Size = new Size(64, 25);
+            lblBook2.TabIndex = 3;
+            lblBook2.Text = "Book 2";
+            //
+            // txtBook2
+            //
+            txtBook2.Location = new Point(590, 55);
+            txtBook2.Name = "txtBook2";
+            txtBook2.ReadOnly = true;
+            txtBook2.Size = new Size(250, 31);
+            txtBook2.TabIndex = 4;
+            //
+            // btnBrowseBook2
+            //
+            btnBrowseBook2.Location = new Point(855, 52);
+            btnBrowseBook2.Name = "btnBrowseBook2";
+            btnBrowseBook2.Size = new Size(110, 38);
+            btnBrowseBook2.TabIndex = 5;
+            btnBrowseBook2.Text = "Browse";
+            btnBrowseBook2.UseVisualStyleBackColor = true;
+            btnBrowseBook2.Click += btnBrowseBook2_Click;
+            //
+            // btnSubmit
+            //
+            btnSubmit.Location = new Point(370, 115);
+            btnSubmit.Name = "btnSubmit";
+            btnSubmit.Size = new Size(110, 38);
+            btnSubmit.TabIndex = 6;
+            btnSubmit.Text = "Submit";
+            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
+            //
+            // btnExit
+            //
+            btnExit.Location = new Point(520, 115);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(110, 38);
+            btnExit.TabIndex = 7;
+            btnExit.Text = "Exit";
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
+            //
+            // lstBook1
+            //
+            lstBook1.FormattingEnabled = true;
+            lstBook1.ItemHeight = 25;
+            lstBook1.Location = new Point(40, 180);
+            lstBook1.Name = "lstBook1";
+            lstBook1.Size = new Size(445, 329);
+            lstBook1.TabIndex = 8;
+            //
+            // lstBook2
+            //
+            lstBook2.FormattingEnabled = true;
+            lstBook2.ItemHeight = 25;
+            lstBook2.Location = new Point(520, 180);
+            lstBook2.Name = "lstBook2";
+            lstBook2.Size = new Size(445, 329);
+            lstBook2.TabIndex = 9;
+            //
+            // ofdBook1
+            //
+            ofdBook1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            ofdBook1.Title = "Choose Book 1";
+            //
+            // ofdBook2
+            //
+            ofdBook2.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            ofdBook2.Title = "Choose Book 2";
+            //
             // Form1
-            // 
+            //
+            AcceptButton = btnSubmit;
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(842, 469);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(txtFileName);
-            Controls.Add(Browse);
-            Controls.Add(listBox1);
-            Controls.Add(label1);
+            CancelButton = btnExit;
+            ClientSize = new Size(1005, 550);
+            Controls.Add(lstBook2);
+            Controls.Add(lstBook1);
+            Controls.Add(btnExit);
+            Controls.Add(btnSubmit);
+            Controls.Add(btnBrowseBook2);
+            Controls.Add(txtBook2);
+            Controls.Add(lblBook2);
+            Controls.Add(btnBrowseBook1);
+            Controls.Add(txtBook1);
+            Controls.Add(lblBook1);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -115,12 +169,17 @@
 
         #endregion
 
-        private Label label1;
-        private ListBox listBox1;
-        private OpenFileDialog openFileDialog1;
-        private Button Browse;
-        private TextBox txtFileName;
-        private Button button1;
-        private Button button2;
+        private Label lblBook1;
+        private TextBox txtBook1;
+        private Button btnBrowseBook1;
+        private Label lblBook2;
+        private TextBox txtBook2;
+        private Button btnBrowseBook2;
+        private Button btnSubmit;
+        private Button btnExit;
+        private ListBox lstBook1;
+        private ListBox lstBook2;
+        private OpenFileDialog ofdBook1;
+        private OpenFileDialog ofdBook2;
     }
 }
